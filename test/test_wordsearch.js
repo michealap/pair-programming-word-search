@@ -1,7 +1,7 @@
 const chai = require('chai');
 const assert = chai.assert;
 
-const wordSearch = require('../wordsearch.js')
+const wordSearch = require('../wordsearch.js');
 
 describe("#wordSearch()", function() {
   it("should return false if the word is not present", function() {
@@ -14,11 +14,12 @@ describe("#wordSearch()", function() {
       ['B', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
       ['U', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
       ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
-      ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
-    ], 'FRANK')
+      ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L']
+    ], 'FRANK');
 
     assert.isFalse(result);
   });
+  //-----------------------------------------------------------------------------------------------------------------
 
   it("should return true if the word is present", function() {
     const result = wordSearch([
@@ -30,9 +31,33 @@ describe("#wordSearch()", function() {
       ['B', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
       ['U', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
       ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
-      ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
-    ], 'SEINFELD')
+      ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L']
+    ], 'SEINFELD');
 
     assert.isTrue(result);
+  });
+  //-----------------------------------------------------------------------------------------------------------------
+  it("should return false if the word search has 1 letter", function() {
+    const result = wordSearch([
+      ['A']
+    ], 'SEINFELD');
+
+    assert.isFalse(result);
+  });
+  //-----------------------------------------------------------------------------------------------------------------
+  it("should return true if the word search has 1 letter and is passed for 1 letter", function() {
+    const result = wordSearch([
+      ['A']
+    ], 'A');
+
+    assert.isTrue(result);
+  });
+  //-----------------------------------------------------------------------------------------------------------------
+  it("should return false if the word search is empty", function() {
+    const result = wordSearch([
+      []
+    ], 'SEINFELD');
+
+    assert.isFalse(result);
   });
 });
